@@ -15,8 +15,8 @@ const blogRoutes = require("./routes/blogs");
 
 
 // APP CONFIG
-mongoose.connect("mongodb://localhost/blog_app");
-// mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect("mongodb://localhost/blog_app");
+mongoose.connect(process.env.DATABASEURL);
 
 app.use(flash());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -52,7 +52,7 @@ app.use("/", indexRoutes);
 app.use("/blogs", blogRoutes);
 
 
-// app.listen(process.env.PORT, process.env.IP);
+app.listen(process.env.PORT, process.env.IP);
 
-app.listen(3000);
+// app.listen(3000);
 
