@@ -1,6 +1,7 @@
-var express = require("express");
-var router  = express.Router();
-var Blog = require("../models/blog");
+const express = require("express");
+const router  = express.Router();
+const Blog = require("../models/blog");
+const middleware = require("../middleware");
 
 // INDEX ROUTE
 router.get("/", function(req, res){
@@ -19,7 +20,7 @@ router.get("/", function(req, res){
  });
  
  // CREATE ROUTE
- router.post("/", function(req, res){
+ router.post("/", middleware.isLoggedIn, function(req, res){
 	 Blog.create(req.body.blog, function(err, newBlog){
 		 if(err){
 			 res.render("blogs/new");
@@ -41,7 +42,7 @@ router.get("/", function(req, res){
  });
  
  // EDIT ROUTE
- router.get("/:id/edit", function(req, res){
+ router.get("/:id/edit", middleware.checkblogOwnership, function(req, res){
 	 Blog.findById(req.params.id, function(err, foundBlog){
 		 if(err){
 			 res.redirect("/blogs");
@@ -53,7 +54,7 @@ router.get("/", function(req, res){
  
  
  // UPDATE ROUTE
- router.put("/:id", function(req, res){
+ router.put("/:id", middleware.checkblogOwnership, function(req, res){
 	 req.body.blog.body = req.sanitize(req.body.blog.body)
 	Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
 	   if(err){
@@ -65,7 +66,7 @@ router.get("/", function(req, res){
  });
  
  // DELETE ROUTE
- router.delete("/:id", function(req, res){
+ router.delete("/:id", middleware.checkblogOwnership, function(req, res){
 	//destroy blog
 	Blog.findByIdAndRemove(req.params.id, function(err){
 		if(err){
