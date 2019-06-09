@@ -6,6 +6,20 @@
 	padding: 0;
 }
 
+/* Navbar */
+
+#content {
+	min-height: 100px;
+	}
+.ui.grid{
+	padding: 0 !important;
+	}
+.pushable.segment{
+	margin: 0 !important;
+	}
+
+/* Content */
+
 i.icon {
     font-size: 2em;
 }
@@ -43,7 +57,7 @@ i.icon {
 		letter-spacing: 0em;
 	}
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 437px) {
 	.footer {
 		font-size: .5em;
 	}
