@@ -1,18 +1,17 @@
-const bodyParser = require("body-parser"),
-		methodOverride = require("method-override"),
-		expressSanitizer = require("express-sanitizer"),
-		passport = require("passport"),
-		passportLocal = require("passport-local"),
-		mongoose       = require("mongoose"),
-		express        = require("express"),
-		app            = express(),
-		expressSession = require("express-session"),
-		flash = require("connect-flash");
-
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
+const expressSanitizer = require("express-sanitizer");
+const passport = require("passport");
+const passportLocal = require("passport-local");
+const mongoose = require("mongoose");
+const expressSession = require("express-session");
 const User = require("./models/user");
+const flash = require("connect-flash");
 
-const indexRoutes = require("./routes/index"),
-blogRoutes = require("./routes/blogs");
+const indexRoutes = require("./routes/index");
+const blogRoutes = require("./routes/blogs");
 
 
 // APP CONFIG
@@ -20,9 +19,9 @@ mongoose.connect("mongodb://localhost/blog_app");
 // mongoose.connect(process.env.DATABASEURL);
 
 app.use(flash());
-app.set("view engine", "ejs");
-app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
