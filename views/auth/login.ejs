@@ -1,48 +1,39 @@
 <% include ../partials/header %>
 
-<!-- <div class="login_container">
-	<form action="/login" method="POST">
-		<div class="login_header">Login</div>
-			<div class="container">
-				<div class="form-group">
-					<label for="Username">Username</label>
-					<input type="text" class="form-control" id="Username" name="username" placeholder="Username">
-				</div>
-				<div class="form-group">
-					<label for="Password">Password</label>
-					<input type="password" class="form-control" id="Password" name="password" placeholder="Password">
-				</div>
-				<br>
-				<button type="submit" class="btn btn-primary">Submit</button>
-				<br><br>
-				<a href="/ecotourism">Go Back</a>
-				<p>Don't have an account? <a href="/register">Sign Up</a></p>
-			</div>
-	</form>
-</div> -->
-
 <div class="ui main container">
-	<form class="ui form" action="/login" method="POST">
-		<div class="field">
-			<label for="Username">Username</label>
-			<input type="text" id="Username" name="username" placeholder="Username" required>
-		</div>
-		<div class="field">
-			<label for="Password">Password</label>
-			<input type="password" id="Password" name="password" placeholder="Password" required>
-		</div>
-		<div class="field">
-			<div class="ui checkbox">
-				<input type="checkbox" id="terms" required>
-				<label for="terms">I agree to the Terms and Conditions</label>
-			</div>
-		</div>
-		<button class="ui button" type="submit">Submit</button>
-		<br><br>
-		<a href="/blogs">Go Back</a>
-		<p>Don't have an account? <a href="/register">Sign Up</a></p>
-	</form>
+    <div class="ui huge header">Login</div>
+    <form class="ui form" action="/login" method="POST">
+        <div class="field">
+            <label for="Username">Username</label>
+            <input
+                type="text"
+                id="Username"
+                name="username"
+                placeholder="Username"
+                required
+            />
+        </div>
+        <div class="field">
+            <label for="Password">Password</label>
+            <input
+                type="password"
+                id="Password"
+                name="password"
+                placeholder="Password"
+                required
+            />
+        </div>
+        <div class="field">
+            <div class="ui checkbox">
+                <input type="checkbox" id="terms" required />
+                <label for="terms">I agree to the Terms and Conditions</label>
+            </div>
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+        <br /><br />
+        <a href="/blogs">Go Back</a>
+        <p>Don't have an account? <a href="/register">Sign Up</a></p>
+    </form>
 </div>
-
 
 <% include ../partials/footer %>
