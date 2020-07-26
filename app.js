@@ -30,11 +30,11 @@ app.use(methodOverride('_method'));
 // AUTH CONFIG
 
 app.use(
-    expressSession({
-        secret: 'Reading blogs daily is really an wonderful habit',
-        resave: false,
-        saveUninitialized: false,
-    })
+	expressSession({
+		secret: 'Reading blogs daily is really an wonderful habit',
+		resave: false,
+		saveUninitialized: false,
+	})
 );
 
 app.use(passport.initialize());
@@ -44,10 +44,10 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(function (req, res, next) {
-    res.locals.currentUser = req.user;
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    next();
+	res.locals.currentUser = req.user;
+	res.locals.success = req.flash('success');
+	res.locals.error = req.flash('error');
+	next();
 });
 
 // RESTFUL ROUTES
@@ -57,4 +57,8 @@ app.use('/blogs', blogRoutes);
 
 // app.listen(process.env.PORT, process.env.IP);
 
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+	console.log(`Server Started at ${PORT}`);
+}) 
